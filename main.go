@@ -62,4 +62,5 @@ func main() {
 	r.GET("/validate", middleware.RequireAuth, controllers.Validate)
 	// After syncing the database
 	r.Run(":5500")
+	
 }
