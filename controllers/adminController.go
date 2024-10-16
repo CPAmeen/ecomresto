@@ -65,11 +65,11 @@ func Login(c *gin.Context) {
 	c.SetSameSite(http.SameSiteLaxMode)
 	c.SetCookie("userAuthorization", tokenString, 3600*24*30, "", "", false, true)
 	c.JSON(http.StatusOK, gin.H{
-		"token created": tokenString,
+		"token": tokenString,
 	})
 }
 func Validate(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
-		"message": "I am logged in.",
+		"message": "I am loggged in.",
 	})
 }
