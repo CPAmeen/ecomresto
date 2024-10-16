@@ -1,0 +1,17 @@
+ 
+<html>
+    <head>
+        <title>Admin Dashboard</title>
+    </head>
+    <body>
+        <form action="/admin/logout" method="GET">
+        <h1>Welcome, {{.Username}}</h1>
+        <p>This is the admin panel, You can manage users and perform administrative tasks.</p>
+    
+        <ul>
+            <a href="/admin/manage_users">Manage Users</a>
+            <button type="submit">Logout</button></a></li>
+        </ul>
+    </form>
+    </body>
+    </html>
