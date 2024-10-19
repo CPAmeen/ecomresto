@@ -9,6 +9,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt"
+	"golang.org/x/crypto/bcrypt"
 )
 
 type Admin struct {
@@ -115,11 +116,11 @@ func Login(c *gin.Context) {
 	}
 
 	// Compare the password (this step assumes you've fetched user details in practice)
-	// err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(body.Password))
-	// if err != nil {
-	// 	c.HTML(http.StatusBadRequest, "login.html", gin.H{"error": "Invalid password"})
-	// 	return
-	// }
+	err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(body.Password))
+	if err != nil {
+		c.HTML(http.StatusBadRequest, "login.html", gin.H{"error": "Invalid password"})
+		return
+	}
 
 	// Generate JWT token with the fixed ID 28
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{

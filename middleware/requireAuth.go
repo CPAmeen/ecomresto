@@ -200,8 +200,8 @@ func RequireAuth(c *gin.Context) {
 		err = sqlDB.QueryRow(query, int(userID)).Scan(&user.ID, &user.Username, &user.Email)
 
 		if err != nil {
-			if err == sql.ErrNoRows {
-				c.JSON(http.StatusUnauthorized, gin.H{"error": "User not found"})
+			if err != sql.ErrNoRows {
+				c.JSON(http.StatusUnauthorized, gin.H{"error": "User  found"})
 				return
 			}
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to query user"})
