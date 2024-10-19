@@ -135,7 +135,7 @@ func Login(c *gin.Context) {
 
 	// Set cookie with token
 	c.SetSameSite(http.SameSiteLaxMode)
-	c.SetCookie("userAuthorization", tokenString, 3600*24*30, "", "", false, true)
+	c.SetCookie("userAuthorizgation", tokenString, 3600*24*30, "", "", false, true)
 
 	// Redirect or respond with success message
 	c.Redirect(http.StatusSeeOther, "/dashboard") // Redirect to the dashboard after successful login
